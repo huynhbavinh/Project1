@@ -14,12 +14,8 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        $article = new Article;
-        $article ->title = 'bài viết số 3';
-        $article ->content = 'nội dung số 3';
-        $article->save();
-
-        return 'Successfully';
+        $articles = Article::all();
+        return view('home')->with('articles',$articles) ;
     }
 
     /**
@@ -29,7 +25,7 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        //
+        return view('create_article');
     }
 
     /**
@@ -40,7 +36,9 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $article = new Article();
+        $article->fill($request->all());
+        $article->save();
     }
 
     /**
@@ -51,7 +49,7 @@ class ArticleController extends Controller
      */
     public function show(Article $article)
     {
-        return $article->content;
+       return $article;
     }
 
     /**
@@ -62,7 +60,8 @@ class ArticleController extends Controller
      */
     public function edit(Article $article)
     {
-        return view('edit')->with('article',$article);
+        
+        return view('edit_article')->with($article);
     }
 
     /**
