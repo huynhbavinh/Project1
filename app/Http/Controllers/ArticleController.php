@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Article;
+use App\Models\Category;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 
 class ArticleController extends Controller
@@ -14,8 +16,29 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        $articles = Article::all();
-        return view('home')->with('articles',$articles) ;
+            // $catogory = Category::find(1);
+            // $articles = $catogory->articles()->paginate(10);
+
+            // foreach ($articles as $article) {
+            //     echo $article->title;
+            // }
+
+            // $article = Article::find(1);
+            // $tags = $article->tags;
+            
+            // foreach($tags as $tag){
+            //     echo $tag->name;
+            // }
+            // ngược lại
+            
+            $tag = Tag::find(1);
+            $articles = $tag->articles;
+
+            foreach ($articles as $article ) {
+                # code...
+                echo $article->title;
+            }
+
     }
 
     /**
