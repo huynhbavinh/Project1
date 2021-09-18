@@ -61,11 +61,7 @@ class ArticleController extends Controller
      */
     public function store(StoreArticleRequest $request)
     {
-        // $request->validate([
-        //         'title' => 'max:3'
-                
-        //     ]);
-
+     
         $article = new Article();
         $article->fill($request->all());
         $article->save();
