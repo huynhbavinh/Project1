@@ -86,7 +86,6 @@ class ArticleController extends Controller
      */
     public function edit(Article $article)
     {
-        
         return view('edit_article')->with($article);
     }
 
