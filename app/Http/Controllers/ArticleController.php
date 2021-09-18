@@ -6,6 +6,7 @@ use App\Models\Article;
 use App\Models\Category;
 use App\Models\Tag;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreArticleRequest;
 
 class ArticleController extends Controller
 {
@@ -48,7 +49,8 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        return view('create_article');
+        $catogories = Category::all();
+        return view('create_article')->with('categories',$catogories);
     }
 
     /**
@@ -57,8 +59,13 @@ class ArticleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreArticleRequest $request)
     {
+        // $request->validate([
+        //         'title' => 'max:3'
+                
+        //     ]);
+
         $article = new Article();
         $article->fill($request->all());
         $article->save();

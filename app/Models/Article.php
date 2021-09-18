@@ -14,7 +14,7 @@ class Article extends Model
     use SoftDeletes;
     use HasFactory;
 
-    protected $fillable = ['title','content'];
+    protected $fillable = ['title','content','category_id'];
 
     public function category(){
         return $this->belongsTo(Category::class);
@@ -22,5 +22,8 @@ class Article extends Model
 
     public function tags(){
         return $this->BelongsToMany(Tag::class,"article_tag");
+    }
+    public function comments(){
+        return $this->morphMany(Comment::class,'commentable'); //đa hình
     }
 }

@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\VideoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,3 +20,5 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::resource('/article', ArticleController::class)->names('article');
+Route::resource('/category', CategoryController::class)->names('category');
+Route::resource('/video', VideoController::class)->names('video');
