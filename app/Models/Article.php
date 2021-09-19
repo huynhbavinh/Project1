@@ -15,6 +15,8 @@ class Article extends Model
     use HasFactory;
 
     protected $fillable = ['title','content','category_id'];
+    protected $hidden =[];
+
 
     public function category(){
         return $this->belongsTo(Category::class);
@@ -25,5 +27,13 @@ class Article extends Model
     }
     public function comments(){
         return $this->morphMany(Comment::class,'commentable'); //đa hình
+    }
+    public function getTitleAttribute($value){
+        // get[ten col]Attribute
+        return 'a'.$value;
+    }
+    public function setTitleAttribute($value){
+        // set[ten col]Attribute
+        $this->attributes['title'] = 'b'.$value;
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\KiemDuyet;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreArticleRequest extends FormRequest
@@ -24,7 +25,19 @@ class StoreArticleRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'max:3'
+            'title' => [
+                'required',
+                'max:10',
+                'min:3',
+                new KiemDuyet
+            ],
+            'category_id' => 'required|exists:categories,id'
+        ];
+    }
+    public function messages()
+    {
+        return[
+            'title.min'=>'Tiêu đề chán thế'
         ];
     }
 }

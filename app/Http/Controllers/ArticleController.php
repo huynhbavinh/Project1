@@ -17,12 +17,12 @@ class ArticleController extends Controller
      */
     public function index()
     {
-            // $catogory = Category::find(1);
-            // $articles = $catogory->articles()->paginate(10);
+            $catogory = Category::find(1);
+            $articles = $catogory->articles()->paginate(10);
 
-            // foreach ($articles as $article) {
-            //     echo $article->title;
-            // }
+            foreach ($articles as $article) {
+                echo $article->title;
+            }
 
             // $article = Article::find(1);
             // $tags = $article->tags;
@@ -32,13 +32,13 @@ class ArticleController extends Controller
             // }
             // ngược lại
             
-            $tag = Tag::find(1);
-            $articles = $tag->articles;
+            // $tag = Tag::find(1);
+            // $articles = $tag->articles;
 
-            foreach ($articles as $article ) {
-                # code...
-                echo $article->title;
-            }
+            // foreach ($articles as $article ) {
+            //     # code...
+            //     echo $article->title;
+            // }
 
     }
 
